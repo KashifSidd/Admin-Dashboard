@@ -1,0 +1,17 @@
+<section class="dialog-wrapper">
+  <header class="heading">
+    <img src="{{ icon }}" alt="" width="30" height="30" *ngIf="icon">
+    {{ title }}
+    <p class="message">{{ message }}</p>
+  </header>
+  <div class="input-details d-flex justify-content-center mb-3" *ngIf="inputLabel">
+    <input class="input-field" type="text" [formControl]="cancellationReason" [placeholder]="inputPlaceholder">
+    <app-form-error-msg [control]="cancellationReason"></app-form-error-msg>
+  </div>
+  <div class="d-flex justify-content-center">
+    <button class="buttons buttons--white br-50 me-2" (click)="onDismiss()"
+      [ngStyle]="{ 'display': dismissBtnText ? 'block' : 'none' }">{{ dismissBtnText }}</button>
+    <button class="buttons br-50" (click)="inputLabel ? onConfirmWithReason() : onConfirm()">{{ confirmBtnText
+      }}</button>
+  </div>
+</section>
